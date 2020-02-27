@@ -7,9 +7,51 @@
 
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="js/apimock.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
 </head>
     <body>
-        <h1>Titulo</h1>
+        <h1>Bluepints</h1>
+
+        <form>
+            <fieldset>
+                <p>Ingrese el Autor<br/>
+                    <input type="text" name="Author" required>
+                </p>
+                <p>Get Blueprints<br/>
+                    <input type="submit">
+                </p>
+            </fieldset>
+        </form>
+        <hr>
+        <h2>BoJack's Blueprints</h2>
+        <table border="">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Numero</th>
+                    <th>Open</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Blueprint_a</td>
+                    <td>123</td>
+                    <td><input type="button" value="Open"></td>
+                </tr>
+                <tr>
+                    <td>School_Blueprints</td>
+                    <td>200</td>
+                    <td><input type="button" value="Open"></td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>Total user points: 323</h2>
+        <hr>
+        <h2>Current Blueprint: Blueprint_a</h2>
+        <b>Aca deberia ir una imagen</b>
+
+
     </body>
 </html>
