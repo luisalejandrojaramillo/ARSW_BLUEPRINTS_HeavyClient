@@ -17,10 +17,8 @@
         <form>
             <fieldset>
                 <p>Ingrese el Autor<br/>
-                    <input type="text" name="Author" required>
-                </p>
-                <p>Get Blueprints<br/>
-                    <input type="submit">
+                    <input type="text" id="author" required>
+                    <button id="button" type="button" class="btn btn-primary" onclick="Run.actualizar(author.value)">Get blueprints </button>
                 </p>
             </fieldset>
         </form>
