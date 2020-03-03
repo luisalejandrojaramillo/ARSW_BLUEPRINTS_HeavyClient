@@ -1,52 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Blueprints</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="css/estiles.css">
 
     <script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
     <script src="/webjars/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css"/>
+
     <script src="js/apimock.js"></script>
+    <script src="js/apiclient.js"></script>
     <script src="js/app.js"></script>
-    <link rel="stylesheet" href="/webjars/bootstrap/4.1.2/css/bootstrap.min.css" />
 </head>
-    <body>
-        <h1>Bluepints</h1>
-        <form>
-            <p>Ingrese el Autor<br/>
-                <input type="text" id="author" placeholder="Nombre del Autor" required>
-                <button id="button" type="button" class="btn btn-primary" onclick="run.actualizar(author.value)">Get blueprints </button>
-            </p>
-        </form>
-        <hr>
-        <h2>BoJack's Blueprints</h2>
-        <table border="">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Numero</th>
-                    <th>Open</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Blueprint_a</td>
-                    <td>123</td>
-                    <td><input type="button" value="Open"></td>
-                </tr>
-                <tr>
-                    <td>School_Blueprints</td>
-                    <td>200</td>
-                    <td><input type="button" value="Open"></td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>Total user points: 323</h2>
-        <hr>
-        <h2>Current Blueprint: Blueprint_a</h2>
-        <b>Aca deberia ir una imagen</b>
+<body>
+
+    <form>
+        <p>
+            Author:  <input id="author" type="text" />
+            <button id="button" type="button" class="btn btn-primary" onclick="doRun.actualizar(author.value)">Get blueprints </button>
+        </p>
+    </form>
+
+    <hr>
+
+    <h2><i id="authorname"></i> Blueprints:</h2>
 
 
-    </body>
+    <table id="blueprintTable">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Puntos</th>
+            <th>Open</th>
+        </tr>
+        </thead>
+        <tbody id="tablas">
+        </tbody>
+    </table>
+    <h2>Total User points : <i id="sumatotal"></i> </h2>
+    <br/>
+
+    <hr>
+    <h2>Current Blueprint<i id="currentBlueprint"></i></h2>
+    <p>
+        Aca debe ir el dibujitoo XD <br/>
+        ...<br/>
+        Por cierto, si leen esto es porque me reindi en el intento XD,<br/>
+        No se PQ pero para que salga la latbla uno debe darle dos veces<br/>
+        CLICK en el GET, manana sigo mirando eso.
+    </p>
+
+
+</body>
 </html>
