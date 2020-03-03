@@ -1,3 +1,3 @@
-By: Carlos Andres Castañeda & Luis Alejandro Jaramillo 
+By: **Fernando Barrera Barrera**, **Carlos Andres Castañeda** & **Luis Alejandro Jaramillo** 
 
 # ARSW BLUEPRINTS HeavyClient
