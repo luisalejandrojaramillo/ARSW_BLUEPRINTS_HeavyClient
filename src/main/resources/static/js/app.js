@@ -13,6 +13,10 @@ var doRun = (function() {
     api.getBlueprintsByAuthor(author, generar);
   };
 
+   var pintarBlue = function(author, name) {
+      api.getBlueprintsByNameAndAuthor(author, name, generateCanvas);
+    };
+
   var mapPoints = function(blueprints) {
     return blueprints.map(function(blueprint) {
       return { name: blueprint.name, points: blueprint.points.length };
@@ -37,15 +41,31 @@ var doRun = (function() {
           blueprint.name +
           "</td> <td>" +
           blueprint.points +
-          "</td> <td><form><button type='button' class='btn btn-primary' onclick='' >Open</button></form></td>"
+          "</td> <td><form><button type='button' class='btn btn-primary' onclick='Run.pintarBlue( \"" +nameAuthor +'" , "' +blueprint.name +"\")' >Open</button></form></td>"
       );
     });
   };
 
-
+   var generateCanvas = function(blueprint) {
+      $("#currentBlueprint").text(blueprint.name);
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.clearRect(0, 0, c.width, c.height);
+      ctx.beginPath();
+      var anterior;
+      blueprint.points.map(function(point) {
+        if (!anterior) {
+          anterior = point;
+          ctx.moveTo(anterior.x, anterior.y);
+        } else {
+          ctx.lineTo(point.x, point.y);
+          ctx.stroke();
+        }
+      });
+    };
 
   return {
     actualizar: actualizar,
-
+    pintarBlue: pintarBlue
   };
 })();

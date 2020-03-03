@@ -16,17 +16,17 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-
+    <h1>Blueprints </h1>
     <form>
         <p>
-            Author:  <input id="author" type="text" />
-            <button id="button" type="button" class="btn btn-primary" onclick="doRun.actualizar(author.value)">Get blueprints </button>
+            Author  <input id="author" type="text" />
+            <button id="button" type="button" class="btn btn-primary" onclick="doRun.actualizar(author.value)"> Get blueprints </button>
         </p>
     </form>
 
     <hr>
 
-    <h2><i id="authorname"></i> Blueprints:</h2>
+    <h2><i id="authorname"></i> blueprints:</h2>
 
 
     <table id="blueprintTable">
@@ -40,19 +40,12 @@
         <tbody id="tablas">
         </tbody>
     </table>
-    <h2>Total User points : <i id="sumatotal"></i> </h2>
+    <h2>Total User points: <i id="sumatotal"></i> </h2>
     <br/>
-
     <hr>
-    <h2>Current Blueprint<i id="currentBlueprint"></i></h2>
-    <p>
-        Aca debe ir el dibujitoo XD <br/>
-        ...<br/>
-        Por cierto, si leen esto es porque me reindi en el intento XD,<br/>
-        No se PQ pero para que salga la latbla uno debe darle dos veces<br/>
-        CLICK en el GET, manana sigo mirando eso.
-    </p>
-
-
+    <div style="float: left">
+        <h2>Current blueprint: <i id="currentBlueprint"></i></h2>
+        <canvas id="myCanvas" width="350" height="350" style="border:1px solid #000000;"></canvas>
+    </div>
 </body>
 </html>
