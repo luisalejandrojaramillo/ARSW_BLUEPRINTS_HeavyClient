@@ -1,5 +1,5 @@
-
-var Run=(function(){
+api = apimock;
+var run=(function(){
   var nameAuthor;
   var listBlue = [];
 
@@ -10,6 +10,12 @@ var Run=(function(){
   var actualizar = function(author) {
     cambiarNombre(author);
     $("#authorname").text(author);
+    api.getBlueprintsByAuthor(author);
+  };
+
+
+  return {
+    actualizar: actualizar,
 
   };
-})
+})();
