@@ -2,11 +2,25 @@ const Url = 'http://localhost:8080/blueprints/';
 apiclient = (function () {
     var f=[]
     return {
-        getBlueprintsByAuthor: function (name, callback) {
-            $.get(Url+name,function(data){
-                f=data;
+		
+        getBlueprintsByAuthor: function (author, callback) {
+			
+           $.ajax({
+                dataType: "json",
+                url: Url+author,
+                success: function (data) {
+                    callback(data)
+                }
             });
-            return callback(f)
+        },
+		getBlueprintsByNameAndAuthor: function (author, name, callback) {
+            $.ajax({
+                dataType: "json",
+                url: Url+author+'/'+name,
+                success: function (data) {
+                    callback(data)
+                }
+            });
         }
 
 

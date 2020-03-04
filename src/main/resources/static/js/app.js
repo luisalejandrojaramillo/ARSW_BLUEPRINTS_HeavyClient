@@ -10,7 +10,9 @@ var doRun = (function() {
   var actualizar = function(author) {
     cambiarNombre(author);
     $("#authorname").text(author);
-    api.getBlueprintsByAuthor(author, generar);
+	api.getBlueprintsByAuthor(author, generar);
+	
+
   };
 
    var pintarBlue = function(author, name) {
@@ -41,15 +43,18 @@ var doRun = (function() {
           blueprint.name +
           "</td> <td>" +
           blueprint.points +
-          "</td> <td><form><button type='button' class='btn btn-primary' onclick='Run.pintarBlue( \"" +nameAuthor +'" , "' +blueprint.name +"\")' >Open</button></form></td>"
+          "</td> <td><form><button type='button' class='btn btn-primary' onclick='doRun.pintarBlue( \"" +nameAuthor +'" , "' +blueprint.name +"\")' >Open</button></form></td>"
       );
     });
+
+	
   };
 
    var generateCanvas = function(blueprint) {
       $("#currentBlueprint").text(blueprint.name);
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
+	  lista=blueprint.points;
       ctx.clearRect(0, 0, c.width, c.height);
       ctx.beginPath();
       var anterior;
@@ -62,7 +67,7 @@ var doRun = (function() {
           ctx.stroke();
         }
       });
-    };
+    };	
 
   return {
     actualizar: actualizar,
