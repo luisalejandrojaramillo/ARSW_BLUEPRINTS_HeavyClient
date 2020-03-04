@@ -27,25 +27,32 @@
     <hr>
 
     <h2><i id="authorname"></i> blueprints:</h2>
-
-
-    <table id="blueprintTable">
-        <thead>
+    <table style="border:hidden">
         <tr>
-            <th>Nombre</th>
-            <th>Puntos</th>
-            <th>Open</th>
+            <td>
+                <table id="blueprintTable">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                        <th>Open</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tablas">
+                    </tbody>
+                </table>
+                <h2>Total User points: <i id="sumatotal"></i> </h2>
+            </td>
+            <td>
+                <h2>Current blueprint: <i id="currentBlueprint"></i></h2>
+                <canvas id="myCanvas" width="350" height="350" style="border:1px solid #000000;"></canvas>
+            </td>
+
         </tr>
-        </thead>
-        <tbody id="tablas">
-        </tbody>
     </table>
-    <h2>Total User points: <i id="sumatotal"></i> </h2>
-    <br/>
-    <hr>
-    <div style="float: left">
-        <h2>Current blueprint: <i id="currentBlueprint"></i></h2>
-        <canvas id="myCanvas" width="350" height="350" style="border:1px solid #000000;"></canvas>
-    </div>
+
+
+
+
 </body>
 </html>
