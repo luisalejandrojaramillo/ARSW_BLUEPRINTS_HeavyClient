@@ -67,10 +67,21 @@ var doRun = (function() {
           ctx.stroke();
         }
       });
-    };	
+    };
+
+    function init(){
+        var pointerzone = document.getElementById("pointerzone");
+        pointerzone.addEventListener("pointerdown", pointerHandler, false);
+    }
+
+    function pointerHandler(event){
+        var coords = document.getElementById("coords");
+        coords.innerHTML = 'x: ' + event.pageX.toFixed(2) + ', y: ' + event.pageY.toFixed(2);
+    }
 
   return {
     actualizar: actualizar,
-    pintarBlue: pintarBlue
+    pintarBlue: pintarBlue,
+    init: init
   };
 })();
