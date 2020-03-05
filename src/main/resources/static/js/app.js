@@ -72,7 +72,13 @@ var doRun = (function() {
   function draw(event) {
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
-      ctx.fillRect(event.pageXOffset, event.pageYOffset, 5, 5);
+      ctx.beginPath();
+      var offset  = getOffset(c);
+      var x = event.pageX - offset.left;
+      var y = event.pageY - offset.top;
+      ctx.fillStyle= "#ff2626";
+      ctx.fillRect(x, y, 5, 5);
+
   }
 
     function init(){
@@ -80,7 +86,6 @@ var doRun = (function() {
         pointerzone.addEventListener("pointerdown", pointerHandler, false);
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d");
-        var offset  = getOffset(canvas);
         if(window.PointerEvent) {
             canvas.addEventListener("pointerdown", draw, false);
         }else {
