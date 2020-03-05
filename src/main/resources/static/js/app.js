@@ -1,7 +1,9 @@
 var api = apiclient;
 var doRun = (function() {
+  var lisBlueprints;
   var nameAuthor;
   var listBlue = [];
+  var nombre;
 
   var cambiarNombre = function(author) {
     nameAuthor = author;
@@ -16,6 +18,7 @@ var doRun = (function() {
   };
 
    var pintarBlue = function(author, name) {
+      nombre = name;
       api.getBlueprintsByNameAndAuthor(author, name, generateCanvas);
     };
 
@@ -33,6 +36,7 @@ var doRun = (function() {
   };
 
   var generar = function(blueprints) {
+    lisBlueprints = blueprints;
     blueprints = mapPoints(blueprints);
     listBlue = blueprints;
     sumaPuntos(blueprints);
@@ -69,13 +73,24 @@ var doRun = (function() {
       });
     };
 
+
+
   function draw(event) {
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
       ctx.beginPath();
+      var blueprint = lisBlueprints.filter(obj => {
+        return obj.name ===  nombre;
+      })[0];
       var offset  = getOffset(c);
-      var x = event.pageX - offset.left;
-      var y = event.pageY - offset.top;
+      var x = (event.pageX - offset.left).toFixed(2);
+      var y = (event.pageY - offset.top).toFixed(2);
+
+      blueprint.points.push({ x : x , y : y });
+      console.log(blueprint);
+
+      generateCanvas(blueprint);
+
       ctx.fillStyle= "#ff2626";
       ctx.fillRect(x, y, 5, 5);
 
