@@ -69,9 +69,38 @@ var doRun = (function() {
       });
     };
 
+  function draw(event) {
+      var c = document.getElementById("myCanvas");
+      var ctx = c.getContext("2d");
+      ctx.fillRect(event.pageXOffset, event.pageYOffset, 5, 5);
+  }
+
     function init(){
         var pointerzone = document.getElementById("pointerzone");
         pointerzone.addEventListener("pointerdown", pointerHandler, false);
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var offset  = getOffset(canvas);
+        if(window.PointerEvent) {
+            canvas.addEventListener("pointerdown", draw, false);
+        }else {
+          //Provide fallback for user agents that do not support Pointer Events
+          canvas.addEventListener("mousedown", draw, false);
+        }
+    }
+
+    function getOffset(obj) {
+          var offsetLeft = 0;
+          var offsetTop = 0;
+          do {
+            if (!isNaN(obj.offsetLeft)) {
+                offsetLeft += obj.offsetLeft;
+            }
+            if (!isNaN(obj.offsetTop)) {
+                offsetTop += obj.offsetTop;
+            }
+          } while(obj = obj.offsetParent );
+          return {left: offsetLeft, top: offsetTop};
     }
 
     function pointerHandler(event){
