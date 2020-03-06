@@ -12,9 +12,7 @@ var doRun = (function() {
   var actualizar = function(author) {
     cambiarNombre(author);
     $("#authorname").text(author);
-	api.getBlueprintsByAuthor(author, generar);
-	
-
+	api.getBlueprintsByAuthor(author, generar)
   };
 
    var pintarBlue = function(author, name) {
@@ -23,13 +21,13 @@ var doRun = (function() {
     };
 
   var mapPoints = function(blueprints) {
-    return blueprints.map(function(blueprint) {
-      return { name: blueprint.name, points: blueprint.points.length };
+       return blueprints.map(function(blueprint) {
+       return { name: blueprint.name, points: blueprint.points.length };
     });
   };
 
   var sumaPuntos = function(blueprints) {
-    var suma = blueprints.reduce(function(total, current) {
+      var suma = blueprints.reduce(function(total, current) {
       return total + current.points;
     }, 0);
     $("#sumatotal").text(suma);
@@ -73,8 +71,6 @@ var doRun = (function() {
       });
     };
 
-
-
   function draw(event) {
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
@@ -85,16 +81,12 @@ var doRun = (function() {
       var offset  = getOffset(c);
       var x = (event.pageX - offset.left).toFixed(2);
       var y = (event.pageY - offset.top).toFixed(2);
-
       blueprint.points.push({ x : x , y : y });
       console.log(blueprint);
-
       generateCanvas(blueprint);
-
       ctx.fillStyle= "#ff2626";
       ctx.fillRect(x, y, 5, 5);
-
-  }
+  };
 
     function init(){
         var pointerzone = document.getElementById("pointerzone");
@@ -107,7 +99,7 @@ var doRun = (function() {
           //Provide fallback for user agents that do not support Pointer Events
           canvas.addEventListener("mousedown", draw, false);
         }
-    }
+    };
 
     function getOffset(obj) {
           var offsetLeft = 0;
@@ -121,12 +113,12 @@ var doRun = (function() {
             }
           } while(obj = obj.offsetParent );
           return {left: offsetLeft, top: offsetTop};
-    }
+    };
 
     function pointerHandler(event){
         var coords = document.getElementById("coords");
         coords.innerHTML = 'x: ' + event.pageX.toFixed(2) + ', y: ' + event.pageY.toFixed(2);
-    }
+    };
 
   return {
     actualizar: actualizar,
