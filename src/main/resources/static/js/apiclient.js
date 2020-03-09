@@ -3,13 +3,21 @@ apiclient = (function () {
     var f=[]
 
     var getBlueprintsByAuthor = function(author,callback){
-       $.ajax({
-            dataType: "json",
-            url: Url+author,
-            success: function (data) {
-                callback(data)
+          var valid = jQuery.ajax({
+            url: Url + author,
+            success: function(result) {
+              callback(result);
+            },
+            async: true
+          });
+          valid.then(
+            function() {
+              console.info("OK ");
+            },
+            function() {
+              alert("No se encuentra el author: " + name);
             }
-        });
+          );
     }
 
     var getBlueprintsByNameAndAuthor = function(author,name,callback){
@@ -18,6 +26,7 @@ apiclient = (function () {
             url: Url+author+'/'+name,
             success: function (data) {
                 callback(data)
+
             }
         });
     }
