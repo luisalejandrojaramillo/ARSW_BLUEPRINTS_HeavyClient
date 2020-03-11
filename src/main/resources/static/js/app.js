@@ -121,7 +121,7 @@ var doRun = (function() {
     };
 
     function savePoints(){
-        var blueprint = listBlue.filter(obj=>{
+        var blueprint = lisBlueprints.filter(obj=>{
             return obj.name === nombre;
         })[0];
         api.setBlueprint(nameAuthor,nombre,JSON.stringify(blueprint));

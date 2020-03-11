@@ -15,7 +15,7 @@ apiclient = (function () {
               console.info("OK ");
             },
             function() {
-              alert("No se encuentra el author: " + name);
+              alert("The author is not found " + name);
             }
           );
     }
@@ -33,17 +33,17 @@ apiclient = (function () {
 
     var setBlueprint = function (author,name,blueprint) {
         var valid = $.ajax({
-            url: Url + author + "/" + name + "/",
-            type: "PUT",
+            url: Url + author + '/' + name + '/',
+            type: 'PUT',
             data: blueprint,
             contentType: "application/json"
         });
         valid.then(
             function() {
-                console.info("OK ");
+                console.info("OK");
             },
             function() {
-                alert("No se encuentra el author: " + name);
+                alert("Error saving plan");
             }
         );
     }
