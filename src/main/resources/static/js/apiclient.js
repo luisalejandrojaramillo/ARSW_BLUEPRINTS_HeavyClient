@@ -2,6 +2,7 @@ const Url = 'http://localhost:8080/blueprints/';
 apiclient = (function () {
     var f=[]
 
+
     var getBlueprintsByAuthor = function(author,callback){
           var valid = jQuery.ajax({
             url: Url + author,
@@ -48,9 +49,26 @@ apiclient = (function () {
         );
     }
 
+    var putPointBluePrint = function(name, author, point, callback){
+    			console.log(name + " "+ author);
+    			bl = f.filter(function (blue) {
+    				console.log(blue);
+    				if(blue.author == author){
+    					console.log(blue.name);
+    					if(blue.name == name) return blue;
+    				}
+    			});
+    			console.log(bl);
+    			bl[0].points.push(point);
+    			callback(author,name);
+    		}
+
+
+
     return {
         getBlueprintsByAuthor: getBlueprintsByAuthor,
 		getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor,
-        setBlueprint: setBlueprint
+        setBlueprint: setBlueprint,
+        putPointBluePrint: putPointBluePrint
     };
 })();

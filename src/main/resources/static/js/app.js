@@ -120,6 +120,24 @@ var doRun = (function() {
         coords.innerHTML = 'x: ' + event.pageX.toFixed(2) + ', y: ' + event.pageY.toFixed(2);
     };
 
+    var createNewBluePrint = function (){
+        if(nameAuthor != undefined){
+            puntos = [];
+            var canvas = document.getElementById("myCanvas");
+            var c_graph = canvas.getContext("2d");
+
+            //c_graph.clearRect(0, 0, $("#grafica")[0].width, $("#grafica")[0].height);
+
+            var newName = prompt("Cual es el nombre del nuevo blueprint?");
+            if(newName != null){
+                nameBluePrintSelected = newName;
+
+                apiclient.putBluePrint(authorName, nameBluePrintSelected, addRows);
+
+            }
+        }
+    }
+
     function savePoints(){
         var blueprint = lisBlueprints.filter(obj=>{
             return obj.name === nombre;
@@ -131,6 +149,7 @@ var doRun = (function() {
     actualizar: actualizar,
     pintarBlue: pintarBlue,
     init: init,
-    savePoints:savePoints
+    savePoints:savePoints,
+    createNewBluePrint: createNewBluePrint
   };
 })();
