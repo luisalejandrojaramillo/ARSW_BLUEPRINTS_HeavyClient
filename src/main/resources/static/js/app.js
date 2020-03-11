@@ -120,9 +120,17 @@ var doRun = (function() {
         coords.innerHTML = 'x: ' + event.pageX.toFixed(2) + ', y: ' + event.pageY.toFixed(2);
     };
 
+    function savePoints(){
+        var blueprint = listBlue.filter(obj=>{
+            return obj.name === nombre;
+        })[0];
+        api.setBlueprint(nameAuthor,nombre,JSON.stringify(blueprint));
+    }
+
   return {
     actualizar: actualizar,
     pintarBlue: pintarBlue,
-    init: init
+    init: init,
+    savePoints:savePoints
   };
 })();

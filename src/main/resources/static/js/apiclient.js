@@ -31,8 +31,26 @@ apiclient = (function () {
         });
     }
 
+    var setBlueprint = function (author,name,blueprint) {
+        var valid = $.ajax({
+            url: Url + author + "/" + name + "/",
+            type: "PUT",
+            data: blueprint,
+            contentType: "application/json"
+        });
+        valid.then(
+            function() {
+                console.info("OK ");
+            },
+            function() {
+                alert("No se encuentra el author: " + name);
+            }
+        );
+    }
+
     return {
         getBlueprintsByAuthor: getBlueprintsByAuthor,
-		getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor
+		getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor,
+        setBlueprint: setBlueprint
     };
 })();
