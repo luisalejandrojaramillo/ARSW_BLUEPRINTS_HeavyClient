@@ -1,8 +1,7 @@
 const Url = 'http://localhost:8080/blueprints/';
 apiclient = (function () {
     var f=[]
-
-
+    
     var getBlueprintsByAuthor = function(author,callback){
           var valid = jQuery.ajax({
             url: Url + author,

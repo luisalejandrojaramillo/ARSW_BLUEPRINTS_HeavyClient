@@ -158,6 +158,7 @@ var doRun = (function() {
     actualizar: actualizar,
     pintarBlue: pintarBlue,
     init: init,
+    newPlan: newPlan,
     savePoints:savePoints,
     createNewBluePrint: createNewBluePrint
   };
