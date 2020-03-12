@@ -95,10 +95,10 @@ var doRun = (function() {
           points: [],
           name: name
         };
-        if (nameAuthor != null){
+        if ((nameAuthor!=null)&(name!="")){
             api.setBlueprint(nameAuthor, nombre, JSON.stringify(blueprint));
         }else{
-            console.info("Autor NO existe");
+            console.info("Autor o nombre NULO");
         }
 
    };
