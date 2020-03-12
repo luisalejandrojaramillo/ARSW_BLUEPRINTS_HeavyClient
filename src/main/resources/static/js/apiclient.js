@@ -31,9 +31,9 @@ apiclient = (function () {
         });
     }
 
-    var setBlueprint = function (author,name,blueprint) {
+    var setBlueprint = (function (author1,name1,blueprint,callback) {
         var valid = $.ajax({
-            url: Url + author + '/' + name + '/',
+            url: Url + author1 + '/' + name1 + '/',
             type: 'PUT',
             data: blueprint,
             contentType: "application/json"
@@ -41,12 +41,15 @@ apiclient = (function () {
         valid.then(
             function() {
                 console.info("OK");
+				callback(author1)
+				
             },
             function() {
                 alert("Error saving plan");
             }
         );
-    }
+		
+    })
 
     var putPointBluePrint = function(name, author, point, callback){
     			console.log(name + " "+ author);
@@ -61,13 +64,20 @@ apiclient = (function () {
     			bl[0].points.push(point);
     			callback(author,name);
     		}
-
+	var delBluePrint = (function(blueprint){
+    	var prom = $.ajax({
+            url: Url + blueprint.author + '/' + blueprint.name,
+            type: 'DELETE'
+        });
+        return prom;
+	})
 
 
     return {
         getBlueprintsByAuthor: getBlueprintsByAuthor,
 		getBlueprintsByNameAndAuthor: getBlueprintsByNameAndAuthor,
         setBlueprint: setBlueprint,
-        putPointBluePrint: putPointBluePrint
+        putPointBluePrint: putPointBluePrint,
+		delBluePrint: delBluePrint
     };
 })();

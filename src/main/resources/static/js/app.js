@@ -4,6 +4,7 @@ var doRun = (function() {
   var nameAuthor;
   var listBlue = [];
   var nombre;
+  var current;
 
   var cambiarNombre = function(author) {
     nameAuthor = author;
@@ -53,6 +54,7 @@ var doRun = (function() {
   };
 
    var generateCanvas = function(blueprint) {
+	  current = blueprint;
       $("#currentBlueprint").text(blueprint.name);
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
@@ -81,7 +83,7 @@ var doRun = (function() {
       var offset  = getOffset(c);
       var x = (event.pageX - offset.left).toFixed(2);
       var y = (event.pageY - offset.top).toFixed(2);
-      blueprint.points.push({ x : x , y : y });
+      blueprint.points.push({ x : parseFloat(x) , y : parseFloat(y) });
       console.log(blueprint);
       generateCanvas(blueprint);
       ctx.fillStyle= "#ff2626";
@@ -138,7 +140,18 @@ var doRun = (function() {
         var blueprint = lisBlueprints.filter(obj=>{
             return obj.name === nombre;
         })[0];
-        api.setBlueprint(nameAuthor,nombre,JSON.stringify(blueprint));
+		console.log(JSON.stringify(blueprint));
+        api.setBlueprint(nameAuthor,nombre,JSON.stringify(blueprint),actualizar);
+		
+    }
+	 function del(){
+		console.log(current);
+        api.delBluePrint(current);
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0,0,c.width,c.height);
+		ctx.beginPath();
+		
     }
 
   return {
@@ -146,6 +159,7 @@ var doRun = (function() {
     pintarBlue: pintarBlue,
     init: init,
     newPlan: newPlan,
-    savePoints:savePoints,
+    savePoints: savePoints,
+	del: del
   };
 })();
