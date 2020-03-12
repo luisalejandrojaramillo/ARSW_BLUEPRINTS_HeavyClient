@@ -88,6 +88,15 @@ var doRun = (function() {
       ctx.fillRect(x, y, 5, 5);
   };
 
+  function newPlan(name){
+    $("#nameBlueprint").val("");
+        var blueprint = {
+          author: nameAuthor,
+          points: [],
+          name: name
+        };
+        api.setBlueprint(nameAuthor, nombre, JSON.stringify(blueprint));
+   };
     function init(){
         var pointerzone = document.getElementById("pointerzone");
         pointerzone.addEventListener("pointerdown", pointerHandler, false);
