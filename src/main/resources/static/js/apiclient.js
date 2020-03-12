@@ -64,12 +64,21 @@ apiclient = (function () {
     			bl[0].points.push(point);
     			callback(author,name);
     		}
-	var delBluePrint = (function(blueprint){
-    	var prom = $.ajax({
-            url: Url + blueprint.author + '/' + blueprint.name,
+	  var delBluePrint = (function(blueprint, callback){
+    	var valid = $.ajax({
+            url: Url + blueprint.author + '/' + blueprint.name + '/',
             type: 'DELETE'
         });
-        return prom;
+          valid.then(
+            function() {
+                console.info("OK");
+				callback(author1)
+				
+            },
+            function() {
+                alert("Error deleting plan");
+            }
+        );
 	})
 
 

@@ -105,5 +105,12 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
             blueprints.replace(new Tuple<>(newBp.getAuthor(),newBp.getName()), blueprint, newBp);
         }           
     }
+    @Override
+    public void deleteBlueprint(String author, String bpname) throws BlueprintPersistenceException {
+        if(!blueprints.containsKey(new Tuple<>(author, bpname))){
+            throw new BlueprintPersistenceException("Blueprint inexistente");
+        }
+        blueprints.remove(new Tuple<>(author, bpname));
+    }
  
 }

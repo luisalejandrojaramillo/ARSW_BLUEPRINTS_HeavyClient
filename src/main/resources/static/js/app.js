@@ -145,12 +145,13 @@ var doRun = (function() {
 		
     }
 	 function del(){
-		console.log(current);
-        api.delBluePrint(current);
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
 		ctx.clearRect(0,0,c.width,c.height);
-		ctx.beginPath();
+		ctx.beginPath(); 
+		console.log(current);
+        api.delBluePrint(current , actualizar);
+			
 		
     }
 
